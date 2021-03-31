@@ -1,0 +1,9 @@
+<launch>
+    <arg name="model" />
+    <arg name="gui" default="False" />
+    <param name="robot_description" textfile="$(find project_robot)/urdf/project_robot.urdf" />
+    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
+    </node>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_tutorial)/urdf.vcg" />
+</launch>
