@@ -4,6 +4,11 @@
     <arg name="gui" default="False" />
     <param name="robot_description" textfile="$(find project_robot)/urdf/project_robot.urdf" />
     
+     <node name="arbotix" pkg="arbotix_python" type="arbotix_driver" output="screen" clear_params="true">
+      <rosparam file="$(find project_robot)/config/project_robot_arbotix.yaml" command="load" />
+      <param name="sim" value="true"/>
+    :</node>
+    
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
     </node>
     
