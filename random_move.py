@@ -18,8 +18,7 @@ class Teleop:
 
         self.cmd = cmd
         while not rospy.is_shutdown():
-            str = "hello world %s" % rospy.get_time()
-            rospy.loginfo(str)
+            rospy.loginfo(" Sending random velocity command : linear = %d  , angular = %d", cmd.linear.x , cmd.angular.z)
             pub.publish(self.cmd)
             rate.sleep()
 
