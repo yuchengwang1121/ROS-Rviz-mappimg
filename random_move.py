@@ -13,12 +13,12 @@ class Teleop:
         self.cmd = None
 
         cmd = Twist()
-        cmd.linear.x = random.uniform(-0.2, 0.5);
-        cmd.angular.z = random.uniform(-0.5, 0.5);
-
-        self.cmd = cmd
         while not rospy.is_shutdown():
-            rospy.loginfo(" Sending random velocity command : linear = %d  , angular = %d", cmd.linear.x , cmd.angular.z)
+            cmd.linear.x = random.uniform(-0.2, 0.5);
+            cmd.angular.z = random.uniform(-0.5, 0.5);
+            self.cmd = cmd
+        
+            rospy.loginfo(" Sending random velocity command : linear = %f  , angular = %f", cmd.linear.x , cmd.angular.z)
             pub.publish(self.cmd)
             rate.sleep()
 
