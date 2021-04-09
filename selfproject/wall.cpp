@@ -28,7 +28,7 @@ int main(int argc, char** argv){
 
                 wall3.pose.position.x = -5.0;
                 wall3.pose.position.y = 0.0;
- wall3.pose.position.z = 0.0;
+ 		wall3.pose.position.z = 0.0;
 
                 wall4.pose.orientation.x = 20.0;
                 wall4.pose.orientation.y = 20.0;
