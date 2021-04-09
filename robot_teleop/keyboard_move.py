@@ -62,7 +62,7 @@ def keyboardloop():
         elif ch == 'S':
             max_tv = run_vel_
             speed = -1
-        turn = 0
+            turn = 0
         elif ch == 'A':
             max_rv = yaw_rate_run_
             speed = 0
