@@ -73,5 +73,6 @@ int main(int argc, char** argv){
                 marker_pub.publish(wall1);
                 marker_pub.publish(wall2);
                 marker_pub.publish(wall3);
+		marker_pub.publish(wall);
 	}
 }
