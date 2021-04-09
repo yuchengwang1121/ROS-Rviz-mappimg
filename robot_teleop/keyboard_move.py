@@ -93,5 +93,5 @@ def stop_robot():
 if __name__ == '__main__':
     try:
         keyboardloop()
-    except rospy.rospy.ROSInterruptException:
+    except rospy.ROSInterruptException:
         pass
