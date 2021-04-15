@@ -72,7 +72,7 @@ Visualization Manager:
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-Enabled: true
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
@@ -302,7 +302,7 @@ Enabled: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /waypoint_markers
-      Name: Marker
+      Name: Goal_point
       Namespaces:
         waypoints: true
       Queue Size: 100
@@ -319,7 +319,7 @@ Enabled: true
     - Class: rviz/Marker
       Enabled: true
       Marker Topic: /visualization_wall
-      Name: Marker
+      Name: Wall
       Namespaces:
         map: true
       Queue Size: 100
@@ -332,7 +332,23 @@ Enabled: true
         Value: true
       Axis: Z
       Channel Name: intensity
-
+      
+      - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /visualization_obs
+      Name: Obstacle
+      Namespaces:
+        basic_obs: true
+      Queue Size: 100
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 0.304
+        Min Value: 0.304
+        Value: true
+      Axis: Z
+      Channel Name: intensity
 
       Class: rviz/LaserScan
       Color: 255; 255; 255
