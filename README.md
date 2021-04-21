@@ -2,7 +2,6 @@
 
 ## GMAPPING
 ![](https://i.imgur.com/ldM08I8.png)
-![](https://i.imgur.com/mTvF0vc.png)
 ![](https://i.imgur.com/Z3CLUlz.png)
 ## MOVE_BASE
 ![](https://i.imgur.com/e9w9yHX.png)
