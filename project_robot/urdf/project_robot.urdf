@@ -1,25 +1,26 @@
 <?xml version="1.0"?>
- <robot name="project_robot">
-	 
-<link name="base_footprint">
+<robot name="project_robot">
+
+  <link name="base_footprint">
       <visual>
-          <origin xyz="0 0 0" rpy="0 0 " />
+          <origin xyz="0 0 0.0" rpy="0 0 0" />
           <geometry>
             <box size=".01 .01 .01"/>
           </geometry>
       </visual>
-    </link>
-	 
-<joint name="base_footprint_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0" />
+  </link>
+
+  <joint name="base_footprint_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 5" />
       <parent link="base_footprint"/>
-      <child link="basic_map" />
-    </joint>
-	 
+      <child link="basic_map"/>
+  </joint>
+
+  <!-- the first base of robot -->
   <link name="basic_map">
     <visual>
       <geometry>
-        <box size="0.30 .20 .05"/>
+        <cylinder length="0.04" radius="0.18"/>
     </geometry>
     <origin rpy="0 0 1.57075" xyz="0 0 0"/>
     <material name="purple">
@@ -28,6 +29,7 @@
     </visual>
  </link>
 
+ <!-- robot's wheel -->
  <link name="right_front_wheel">
     <visual>
       <geometry>
@@ -38,17 +40,17 @@
       </material>
     </visual>
   </link>
-	
+
  <joint name="right_front_wheel_joint" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="basic_map"/>
     <child link="right_front_wheel"/>
-    <origin rpy="0 1.57075 0" xyz="0.08 0.2 -0.03"/>
+    <origin rpy="0 1.57075 0" xyz="0.08 0.1 -0.03"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
- <link name="right_back_wheel">
+  <link name="right_back_wheel">
     <visual>
       <geometry>
         <cylinder length=".05" radius="0.025"/>
@@ -59,11 +61,11 @@
     </visual>
   </link>
 
-<joint name="right_back_wheel_joint" type="continuous">
+ <joint name="right_back_wheel_joint" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="basic_map"/>
     <child link="right_back_wheel"/>
-    <origin rpy="0 1.57075 0" xyz="0.08 -0.2 -0.03"/>
+    <origin rpy="0 1.57075 0" xyz="0.08 -0.1 -0.03"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
  </joint>
@@ -78,11 +80,12 @@
       </material>
     </visual>
   </link>
-<joint name="left_front_wheel_joint" type="continuous">
+
+  <joint name="left_front_wheel_joint" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="basic_map"/>
     <child link="left_front_wheel"/>
-    <origin rpy="0 1.57075 0" xyz="-0.08 0.2 -0.03"/>
+    <origin rpy="0 1.57075 0" xyz="-0.08 0.1 -0.03"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
@@ -97,28 +100,342 @@
       </material>
     </visual>
   </link>
-<joint name="left_back_wheel_joint" type="continuous">
+
+  <joint name="left_back_wheel_joint" type="continuous">
     <axis xyz="0 0 1"/>
     <parent link="basic_map"/>
     <child link="left_back_wheel"/>
-    <origin rpy="0 1.57075 0" xyz="-0.08 -0.2 -0.03"/>
+    <origin rpy="0 1.57075 0" xyz="-0.08 -0.1 -0.03"/>
     <limit effort="100" velocity="100"/>
     <joint_properties damping="0.0" friction="0.0"/>
   </joint>
 
- <link name="head">
+  <!-- the camera for robot-->
+  <link name="head">
     <visual>
       <geometry>
-        <box size=".02 .03 .03"/>
+        <box size=".1 .05 .05"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="camhead" type="fixed">
+    <parent link="basic_map"/>
+    <child link="head"/>
+    <origin xyz="0 0.1 0.05"/>
+  </joint>
+
+  <link name="camera">
+    <visual>
+      <geometry>
+        <cylinder length=".04" radius="0.02"/>
+      </geometry>
+      <material name="black">
+          <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocamera" type="fixed">
+    <parent link="head"/>
+    <child link="camera"/>
+    <origin rpy="1.57075 0 0" xyz="0 0.03 0"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <!--the controller for camera and wheels-->
+  <link name="controller">
+    <visual>
+      <geometry>
+         <box size=".2 .15 .03"/>
+      </geometry>
+      <material name="blue">
+          <color rgba="0 0 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocon" type="fixed">
+    <parent link="basic_map"/>
+    <child link="controller"/>
+    <origin xyz="0 -0.04 0.03"/>
+  </joint>
+
+  <!-- the wire between camera and controler -->
+  <link name="wire1">
+    <visual>
+      <geometry>
+        <box size=".07 .1 .01"/>
       </geometry>
       <material name="white">
           <color rgba="1 1 1 1"/>
       </material>
     </visual>
   </link>
- <joint name="tobox" type="fixed">
-    <parent link="basic_map"/>
-    <child link="head"/>
-    <origin xyz="0 0.08 0.025"/>
+
+  <joint name="contocam" type="fixed">
+    <parent link="controller"/>
+    <child link="wire1"/>
+    <origin xyz="0 0.1 0.005"/>
   </joint>
-</robot>
+
+  <!-- the columns to support above levels -->
+  <link name="column1">
+    <visual>
+      <geometry>
+        <cylinder length=".3" radius="0.01"/>
+      </geometry>
+      <material name="gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocol1" type="fixed">
+    <parent link="basic_map"/>
+    <child link="column1"/>
+    <origin rpy="0 0 0" xyz="0.12 0.12 0.15"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="column2">
+    <visual>
+      <geometry>
+        <cylinder length=".3" radius="0.01"/>
+      </geometry>
+      <material name="gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocol2" type="fixed">
+    <parent link="basic_map"/>
+    <child link="column2"/>
+    <origin rpy="0 0 0" xyz="-0.12 0.12 0.15"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="column3">
+    <visual>
+      <geometry>
+        <cylinder length=".3" radius="0.01"/>
+      </geometry>
+      <material name="gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocol3" type="fixed">
+    <parent link="basic_map"/>
+    <child link="column3"/>
+    <origin rpy="0 0 0" xyz="0.12 -0.12 0.15"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <link name="column4">
+    <visual>
+      <geometry>
+        <cylinder length=".3" radius="0.01"/>
+      </geometry>
+      <material name="gray">
+          <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tocol4" type="fixed">
+    <parent link="basic_map"/>
+    <child link="column4"/>
+    <origin rpy="0 0 0" xyz="-0.12 -0.12 0.15"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <!-- the second base of robot -->
+  <link name="sec_lev">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.18"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0 0 0"/>
+    <material name="purple">
+        <color rgba=".5 0 .5 1"/>
+    </material>
+    </visual>
+  </link>
+
+  <joint name="tolev2" type="fixed">
+    <parent link="basic_map"/>
+    <child link="sec_lev"/>
+    <origin rpy="0 0 0" xyz="0 0 0.15"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <!-- raspberry pi to spray the rubbing alchol-->
+   <link name="raspberry_pi">
+    <visual>
+      <geometry>
+         <box size=".1 .2 .03"/>
+      </geometry>
+      <material name="green">
+          <color rgba="0 0.5 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="torasp" type="fixed">
+    <parent link="sec_lev"/>
+    <child link="raspberry_pi"/>
+    <origin xyz="0 -0.04 0.03"/>
+  </joint>
+
+  <!--wires from raps connect to controller-->
+   <link name="wirefromrasp">
+    <visual>
+      <geometry>
+         <box size=".07 .13 .01"/>
+      </geometry>
+      <material name="white">
+          <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="raspto" type="fixed">
+    <parent link="raspberry_pi"/>
+    <child link="wirefromrasp"/>
+    <origin xyz="0 -0.1 0"/>
+  </joint>
+
+   <link name="wirefromcon">
+    <visual>
+      <geometry>
+         <box size=".07 .13 .01"/>
+      </geometry>
+      <material name="white">
+          <color rgba="0 0.5 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="conto" type="fixed">
+    <parent link="controller"/>
+    <child link="wirefromcon"/>
+    <origin xyz="0 -0.1 0.005"/>
+  </joint>
+
+   <link name="wirefromwire">
+    <visual>
+      <geometry>
+         <box size=".07 .15 .01"/>
+      </geometry>
+      <material name="white">
+          <color rgba="1 1 1  1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="wireto" type="fixed">
+    <parent link="wirefromcon"/>
+    <child link="wirefromwire"/>
+    <origin rpy="1.55 0 0" xyz="0 -0.06 0.07"/>
+  </joint>
+
+  <!-- the wire between nozzle and rasp-->
+  <link name="wire2">
+    <visual>
+      <geometry>
+         <box size=".02 .1 .01"/>
+      </geometry>
+      <material name="white">
+          <color rgba="1 1 1  1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="rasptonoz" type="fixed">
+    <parent link="raspberry_pi"/>
+    <child link="wire2"/>
+    <origin rpy="0 0 0" xyz="0 0.1 0.005"/>
+  </joint>
+
+  <!-- the nozzle on second base-->
+  <link name="head2">
+    <visual>
+      <geometry>
+        <box size=".1 .05 .05"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="nozhead" type="fixed">
+    <parent link="sec_lev"/>
+    <child link="head2"/>
+    <origin xyz="0 0.1 0.05"/>
+  </joint>
+
+  <link name="nozzle">
+    <visual>
+      <geometry>
+        <box size=".14 .05 .02"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.5 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tonoz" type="fixed">
+    <parent link="head2"/>
+    <child link="nozzle"/>
+    <origin xyz="0 0.03 0"/>
+  </joint>
+
+  <!--the top base of the robot-->
+    <link name="top_lev">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.18"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0 0 0"/>
+    <material name="purple">
+        <color rgba=".5 0 .5 1"/>
+    </material>
+    </visual>
+  </link>
+
+  <joint name="totop" type="fixed">
+    <parent link="basic_map"/>
+    <child link="top_lev"/>
+    <origin rpy="0 0 0" xyz="0 0 0.3"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+  <!-- the lidar at top base-->
+  <link name="LiDar">
+    <visual>
+      <geometry>
+        <cylinder length="0.04" radius="0.05"/>
+    </geometry>
+    <origin rpy="0 0 1.57075" xyz="0 0 0"/>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    </visual>
+  </link>
+
+  <joint name="toLia" type="fixed">
+    <parent link="top_lev"/>
+    <child link="LiDar"/>
+    <origin rpy="0 0 0" xyz="0 0.1 .02"/>
+    <joint_properties damping="0.0" friction="0.0"/>
+  </joint>
+
+</robot>                
