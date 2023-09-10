@@ -102,20 +102,20 @@ roslaunch project_robot_nav.launch
 </p>
 
 ## REFERENCE
-https://github.com/pirobot/rbx1
-https://github.com/vanadiumlabs/arbotix_ros
-https://gino6178.medium.com/ros-開發與實戰-安裝melodic-4a2d76ceb68b
-https://cse.sc.edu/~jokane/agitr/agitr-letter.pdf
-http://wiki.ros.org/cn
-https://www.guyuehome.com/category/column/ros-exploring
-https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#overview
-https://tr-ros-tutorial.readthedocs.io/zh_CN/latest/_source/setup/0.1.准备工作.html
-https://clearpathrobotics.com/ros-robot-operating-system-cheat-sheet/
-https://blog.csdn.net/uunubt/article/details/81183867
-https://automaticaddison.com/how-to-launch-the-turtlebot3-simulation-with-ros/
-https://pojenlai.wordpress.com/2012/12/14/ros教學系列文整理/
-https://rosonjetson.wordpress.com/2015/08/30/ros-自學指南/
-https://medium.com/pyladies-taiwan/reinforcement-learning-進階篇-deep-q-learning-26b10935a745
-https://b9532026.wordpress.com/2010/03/30/apt-get-指令一覽-2/
-https://blog.techbridge.cc/2016/09/28/ros-collision-avoiding-robot/
-https://blog.techbridge.cc/2016/05/14/ros-object-recognition-kitchen/
+1. https://github.com/pirobot/rbx1
+2. https://github.com/vanadiumlabs/arbotix_ros
+3. https://gino6178.medium.com/ros-開發與實戰-安裝melodic-4a2d76ceb68b
+4. https://cse.sc.edu/~jokane/agitr/agitr-letter.pdf
+5. http://wiki.ros.org/cn
+6. https://www.guyuehome.com/category/column/ros-exploring
+7. https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/#overview
+8. https://tr-ros-tutorial.readthedocs.io/zh_CN/latest/_source/setup/0.1.准备工作.html
+9. https://clearpathrobotics.com/ros-robot-operating-system-cheat-sheet/
+10. https://blog.csdn.net/uunubt/article/details/81183867
+11. https://automaticaddison.com/how-to-launch-the-turtlebot3-simulation-with-ros/
+12. https://pojenlai.wordpress.com/2012/12/14/ros教學系列文整理/
+13. https://rosonjetson.wordpress.com/2015/08/30/ros-自學指南/
+14. https://medium.com/pyladies-taiwan/reinforcement-learning-進階篇-deep-q-learning-26b10935a745
+15. https://b9532026.wordpress.com/2010/03/30/apt-get-指令一覽-2/
+16. https://blog.techbridge.cc/2016/09/28/ros-collision-avoiding-robot/
+17. https://blog.techbridge.cc/2016/05/14/ros-object-recognition-kitchen/
