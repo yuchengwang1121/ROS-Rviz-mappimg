@@ -95,7 +95,7 @@ python3 move_base_square.py
 <img src= https://i.imgur.com/qYoMPW3.png width="400px">
 </p>
 
-### Final result|
+### Final result
 ```shell=
 roslaunch project_robot.launch
 roslaunch project_robot_nav.launch
