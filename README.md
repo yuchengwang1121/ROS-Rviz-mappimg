@@ -62,6 +62,7 @@ rosrun map_server map_saver -f mymap
 <img src= https://i.imgur.com/ldM08I8.png width="400px">
 <img src= https://i.imgur.com/Z3CLUlz.png width="400px">
 </p>
+
 ### MOVE_BASE
 * The move_base package provides navigation functionalities, including:
   * Global Path Planning:
@@ -83,6 +84,7 @@ rosrun rviz rviz -d rospack find rbx1_nav/nav_obstacles.rviz
 <p align="center">
 <img src= https://i.imgur.com/e9w9yHX.png width="400px">
 </p>
+
 * Combime the previous work. First, include the walls and obstacles in the launch file, so you don't have to use multiple rosrun commands. Also, remember to update the frame_id in the wall and obstacle parameters to match the changes in the global TF (transform) frame, which should typically be set to "map."
 ```shell=
 roslaunch project_robot project_robot.launch
@@ -92,6 +94,7 @@ python3 move_base_square.py
 <p align="center">
 <img src= https://i.imgur.com/qYoMPW3.png width="400px">
 </p>
+
 ### Final result|
 ```shell=
 roslaunch project_robot.launch
