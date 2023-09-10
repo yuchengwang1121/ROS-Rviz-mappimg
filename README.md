@@ -27,17 +27,20 @@
 <p align="center">
 <img src= https://i.imgur.com/pazDHNG.png width="400px">
 </p>
+
 ### Topic
 * It's somewhat akin to the hashtag mechanism. Nodes can utilize it to publish information about a specific topic, and if there's a node responsible for monitoring that topic, it can receive this information. This is what's referred to as the publisher and subscriber mechanism. The relationship between publishers and subscribers can be one-to-one, one-to-many, many-to-one, or many-to-many because the topic checks who has published new information and who has subscribed to it and then disseminates it.
 <p align="center">
 <img src= https://i.imgur.com/b8RWHOg.png width="400px">
 </p>
+
 * When two nodes are transmitting data through a Topic, they must first agree on the format of this transmission, which means specifying the message type for that Topic. Each Topic needs to define what kind of message type it will use. This can include message types like actionlib_msgs for controlling actions, nav_msgs for navigation, sensor_msgs for sensors, and so on. Some are predefined by others, while you can also define your custom message types.
 ### Service
 * A service corresponds to both a server and a client, and these two entities can communicate through the service. In other words, the client sends a request to the server, and the server then responds with the corresponding response to the client.
 <p align="center">
 <img src= https://i.imgur.com/cXWHKpS.png width="400px">
 </p>
+
 * On the other hand, with topics, the same message is transmitted, essentially what the publisher publishes. However, with services, a set of messages is exchanged, specifically a request and a response. The server responds differently to various requests.
 ### Launch File
 * Some of the self-defined parameters set in the parameter server will disappear when the server is shut down. They won't be present the next time it is opened. This is why launch files exist. These files are used to store default parameters or pre-execution scripts, somewhat similar to shell scripts.
